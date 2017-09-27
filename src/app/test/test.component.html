@@ -1,0 +1,50 @@
+  {{ nameFirst }}
+  <br/>
+  Another Way: <div [innerHTML]="nameFirst"></div>
+  {{ nameFirst }} is {{ nameFirst.length }} characters longs.
+  <br/>
+  Name First: <input [(ngModel)]="nameFirst"/>
+  <br/>
+  Checked?: <input type="checkbox" [(ngModel)]="checked"/>
+  <br/>
+  Am I checked?: {{ checked ? 'I am' : 'No I am not'}}
+  <br/>
+<div>
+Attribute Example: <div [attr.align]="checked ? 'center' : 'left'"> Am I centered?</div>
+Color Example: <div [style.color]="checked ? 'red' : 'black'"> I am red</div>
+Class Example: <div [class.customHighlight]="checked">I might be highlighted</div>
+</div>
+
+<br/>
+<br/>
+<div>Last Action: {{ lastAction }}</div>
+<br/>
+<button (click)="buttonClicked()">Click Me</button>
+<h2>ngIf</h2>
+Show? <input type="checkbox" [(ngModel)]="showData"/>
+<br/>
+<div *ngIf="showData">
+  I am Here!
+</div>
+<div *ngIf="!showData">
+  I am the one being displayed!
+</div>
+<div [hidden]="!showData">
+  I am not hidden
+</div>
+<h2>ngFor</h2>
+  <ul>
+    <li *ngFor="let state of states">{{ state }} <span (click)="deleteState(state)">(x)</span></li>
+  </ul>
+  <!-- #newState creates that dynamically allows you to reference the input element -->
+  New State: <input type="text" #newState/>
+  <button [hidden]="!newState" (click)="addState(newState.value)">Add</button>
+<h2>ngSwitch</h2>
+<div>
+  Pick a number between 1 and 3: <input type="number" [(ngModel)]="selectedNumber"/>
+  <div [ngSwitch]="selectedNumber">
+    <span *ngSwitchCase="1">You are 1</span>
+    <span *ngSwitchCase="2">You are 2</span>
+    <span *ngSwitchCase="3">You are 3</span>
+  </div>
+</div>
